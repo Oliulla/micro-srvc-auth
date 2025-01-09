@@ -1,9 +1,10 @@
 import { MiddlewareConsumer, Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { PrismaModule } from "./prisma/prisma.module";
-import { LoggerModule } from "./logger/logger.module";
+import { ConfigModule } from '@nestjs/config';
+import { LoggerModule } from './logger/logger.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { UsersModule } from './users/users.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HttpExceptionFilter } from './common/filters/http-exception.filter';
     }),
     PrismaModule,
     LoggerModule,
+    UsersModule,
   ],
 
   controllers: [],

@@ -86,3 +86,8 @@ docker ps
 ```bash
 docker logs nestjs-app
 ```
+
+### To open prisma studio
+```bash
+npx prisma studio
+```

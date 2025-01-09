@@ -7,7 +7,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123123
-      PGDATA: /data/postgres
       POSTGRES_DB: authdb
     volumes:
       - db:/data/postgres
@@ -17,7 +16,7 @@ services:
       - db
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -d authdb" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -41,6 +40,5 @@ services:
 networks:
   db:
     driver: bridge
-
 volumes:
   db:
