@@ -33,7 +33,7 @@ async function bootstrap() {
     swaggerOptions: { persistAuthorization: true },
   });
 
-  const port = 8081;
+  const port = 3000;
   await app.listen(port, () => console.log(`Server running at port ${port}`));
 }
 bootstrap();
