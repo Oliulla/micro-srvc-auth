@@ -12,8 +12,6 @@ src/
 │   │   ├── http-exception.filter.ts
 │   ├── pipes/
 │   │   ├── validation.pipe.ts
-├── config/
-│   ├── logger.config.ts
 ├── main.ts
 
 ```
