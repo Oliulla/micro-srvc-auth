@@ -4,12 +4,15 @@ import { AppModule } from "./app.module";
 import { VersioningType } from "@nestjs/common";
 import * as basicAuth from "express-basic-auth";
 import { ValidationPipe } from './common/pipes/validation.pipe';
+import { Constants } from './common/constants/constants';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Apply ValidationPipe globally
   app.useGlobalPipes(new ValidationPipe());
+
+  app.setGlobalPrefix(Constants.API);
 
   app.enableVersioning({
     defaultVersion: '1',
