@@ -1,3 +1,4 @@
+## Project Structure
 ```text
 src/
 ├── auth/
@@ -21,7 +22,7 @@ src/
 └── main.ts
 ```
 
-
+## <----------------------------------------------Docker Doc Start----------------------------------------------------->
 Step 1: Stop all running containers
 To stop all running containers (including your NestJS application and PostgreSQL), use the following command:
 
@@ -87,7 +88,43 @@ docker ps
 docker logs nestjs-app
 ```
 
+
+## <-------------------------------------------------Prisma---------------------------------------------------------->
+
+
+## Run Prisma Migrations
+#### Ensure you're inside your Docker container (for the app) where Prisma CLI is available.
+### Step into the container:
+```bash
+docker-compose exec app sh
+```
+### Run the migration:
+### Replace describe_changes with a meaningful name for your migration (e.g., add_deletedAt_field or add_post_model).
+```bash
+npx prisma migrate dev --name describe_changes
+```
+
+## Prisma will:
+Check that the migrations applied successfully:
+
 ### To open prisma studio
 ```bash
 npx prisma studio
 ```
+
+### Generate Updated Prisma Client
+#### After applying migrations, regenerate the Prisma Client to reflect the changes in your application code:
+```bash
+npx prisma generate
+```
+
+### Restart the Application
+### After applying changes, restart your Docker containers to ensure the app uses the updated Prisma Client and database schema.
+```bash
+docker-compose down
+docker-compose up --build
+```
+## Additional Notes
+#### If you're working with production databases, consider using npx prisma migrate deploy instead of migrate dev. This ensures migrations are explicitly applied without generating new ones during deployment.
+
+# Always back up your database before applying schema-altering migrations in a live environment.

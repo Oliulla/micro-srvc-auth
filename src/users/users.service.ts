@@ -14,25 +14,28 @@ export class UsersService {
   }
 
   async findAll() {
-    return await this.prisma.user.findMany();
+    return await this.prisma.user.findMany({
+      where: { deletedAt: null },
+    });
   }
 
   async findOne(id: number) {
     return await this.prisma.user.findUnique({
-      where: { id },
+      where: { id, deletedAt: null },
     });
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     return await this.prisma.user.update({
-      where: { id },
+      where: { id, deletedAt: null },
       data: updateUserDto,
     });
   }
 
   async remove(id: number) {
-    return await this.prisma.user.delete({
+    return await this.prisma.user.update({
       where: { id },
+      data: { deletedAt: new Date() },
     });
   }
 }
