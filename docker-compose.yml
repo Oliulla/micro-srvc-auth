@@ -23,7 +23,7 @@ services:
 
   # NestJS application service
   app:
-    container_name: nestjs-app
+    container_name: auth-service
     build:
       context: .
       dockerfile: Dockerfile
