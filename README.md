@@ -22,7 +22,7 @@ src/
 └── main.ts
 ```
 
-## <----------------------------------------------Docker Doc Start----------------------------------------------------->
+## <-------------------------------------Docker Doc Start--------------------------------------->
 Step 1: Stop all running containers
 To stop all running containers (including your NestJS application and PostgreSQL), use the following command:
 
@@ -89,7 +89,7 @@ docker logs nestjs-app
 ```
 
 
-## <-------------------------------------------------Prisma---------------------------------------------------------->
+## <----------------------------------------Prisma--------------------------------------------->
 
 
 ## Run Prisma Migrations
